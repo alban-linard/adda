@@ -1,0 +1,52 @@
+library project Adda is
+
+  for Languages use ("Ada");
+  for Library_Name use "adda";
+
+  for Source_Dirs use ("src");
+  for Object_Dir use "obj";
+  for Library_Dir use "lib";
+
+  for Library_Support use "full";
+  for Library_Kind use "Relocatable";
+
+  package GNATtest is
+    for Subdir use "test";
+    for GNATtest_Switches
+      use ("--tests-dir=test",
+           "--test-duration",
+           "--passed-tests=show",
+           "--verbose"
+           );
+  end Gnattest;
+
+  package Pretty_Printer is
+    for Source_Dirs use ("src", "obj/gnattest/tests");
+    for Default_Switches ("Ada")
+      use ("--alignment",
+           "--comments-gnat-indentation", "--comments-gnat-beginning",
+           "--comments-fill",
+           "--use-on-new-line",
+           "--insert-blank-lines",
+           "--indentation=4",
+           "--decimal-grouping=3",
+           "--based-grouping=4",
+           "--split-line-before-record",
+           "--indent-named-statements",
+           "--split-line-before-op",
+           "--call_threshold=0",
+           "--par_threshold=0",
+           "--vertical-enum-types",
+           "--vertical-array-types",
+           "--vertical-named-aggregates",
+           "--vertical-case-alternatives",
+           "--no-separate-is",
+           "--no-separate-loop-then",
+           "--replace",
+           "--wide-character-encoding=8",
+           "--incremental",
+           "--verbose"
+           );
+  end Pretty_Printer;
+
+end Adda;
